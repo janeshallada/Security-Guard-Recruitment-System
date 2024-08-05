@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://c8.alamy.com/comp/2FN5FGG/composition-of-midsection-of-security-guard-blue-jacket-with-yellow-text-over-green-background-2FN5FGG.jpg'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: none;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+        .admin-image {
+          max-width: 80px;
+          border-radius: 40%;
+          margin: 20px auto;
+          display: block;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+        input[type="Logout"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #d41515;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e23d27;
+        }
+    </style>
+</head>
+<body>
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <ul class="navbar-nav">
+  </ul></nav>
+    <header>
+        <h1>Welcome to the Admin Dashboard</h1>
+    </header>
+    <div class="container">
+      <img src="https://cdn2.vectorstock.com/i/1000x1000/34/96/flat-business-man-user-profile-avatar-in-suit-vector-4333496.jpg" alt="AdminImage" class="admin-image">
+        <h2 align="center">Admin Actions</h2>
+        <div class="button-container">
+          <a href="/profile_update/">PROFILE UPDATE</a>
+          <a href="/change_password/">CHANGE PASSWORD</a>
+            <a href="/total_applications/">NEW APPLICATIONS</a>
+            <a href="/accepted_applications/">ACCEPTED APPLICATIONS</a>
+            <a href="/rejected_applications/">REJECTED APPLICATIONS</a>
+            <a href="/total_guards/">TOTAL GUARDS</a>
+
+        </div>
+        <a href="/logout_admin/"><input type="submit" value="Logout"></a>
+    </div>
+    {% for i in messages %}
+    <script>
+        alert('{{i}}');
+    </script>
+    {% endfor %}
+</body>
+</html>

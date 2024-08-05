@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Guard Queries</title>
+	<style>
+        body {
+            background-image: url('https://pmtips.net/Portals/0/EasyDNNnews/1981/img-3-critical-items-for-your-issues-log.jpg'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(201, 108, 108);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 100px; 
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        input[type="text"],
+        select
+		textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #cc3939;
+            border-radius: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body><center>
+	<div class="container">
+	<form action="" method="post">
+		{% csrf_token %}
+	<label for="address">Write Your query/issue:</label>
+    <textarea id="text" name="query" placeholder="please text the query" required></textarea><br><br>
+	<div>
+    	<input type="submit" value="submit"</button>
+    </div></div>
+    </form></center>
+
+ {% for i in messages %}
+<script>
+    alert('{{i}}');
+</script>
+{% endfor %}
+
+
+</body>
+</html>

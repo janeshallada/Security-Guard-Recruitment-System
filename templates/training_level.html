@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Training Levels</title>
+	<style>
+        body {
+            background-image: url('https://www.dream-dictionary.com/wp-content/uploads/2023/02/security-guard.jpg'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .table-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(243, 215, 174);
+            box-shadow: 0 0 10px rgba(10, 10, 10, 0.918);
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 100px; 
+        }
+        .table {
+		   width: 50%;
+		   border-collapse: collapse;
+		   margin-top: 2px;
+	   }
+
+	   .table th {
+		   background-color: #2a2e30;
+		   color: #ffffff;
+		   padding: 10px;
+		   text-align: center;
+           text-decoration: solid;
+	   }
+       .table td {
+            padding: 8px;
+            border-bottom: 1px solid #f0e7e7;
+        }
+
+	   .table tr {
+		   transition: 0.5s;
+	   }
+
+	   .table tr:hover {
+		   background-color: #ffffff;
+	   }
+
+	   .table td {
+		   padding: 10px;
+		   border-bottom: 1px solid #ffffff;
+       }
+
+        h2 {
+            color: #333;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .form-control {
+            margin: 0 auto;
+            border-radius: 20px;
+            padding: 10px 10px;
+        }
+    </style>
+</head>
+<body>
+
+	<center>
+		<div class="table-container">
+            <table class="table">
+				<h2>Your Training Level</h2>
+				<p>{{data.level}}</p>
+            <div>
+                {% if data.level != "not get any training Level" %}
+                {% if data2.tstatus == "Accepted" %}
+                <h2>Training Details</h2>
+                    <tr>
+                        <th>Training Location</th>
+                        <td>{{data2.location}}</td>
+                        <th>Contact No</th>
+                        <td>{{data2.contactno2}}</td>
+                    </tr>
+                    <tr>
+                        <th>Starting Time</th>
+                        <td>{{data2.fromtime}}</td>
+                        <th>Ending Time</th>
+                        <td>{{data2.totime}}</td>
+                    </tr>
+                    <tr>
+                        <th>Starting Date</th>
+                        <td>{{data2.fromdate}}</td>
+                        <th>Ending Date</th>
+                        <td>{{data2.todate}}</td>
+                    </tr>
+                    
+                {% endif %}
+                {% endif %}
+            </div>
+	</div>
+	<div>
+	<form action="" method="post">
+		{% csrf_token %}
+		<label for="training level" text="bold">Select a Training Level:</label>
+            <select class="form-control" type="text" name="level" placeholder="Choose the training Level" required></textarea>
+            <option value="">Choose the apropriate level</option>
+            <option>Level 1</option>
+            <option>Level 2</option>
+            <option>Level 3</option>
+            </select><br><br>
+            <div>          	
+            </div></table><br>
+            <input type="submit" value="submit">
+            <input type="submit" value="close">
+	</form>
+
+</div>
+    </center></table>
+
+    {% for i in messages %}
+<script>
+    alert('{{i}}');
+</script>
+{% endfor %}
+
+</body>
+</html>

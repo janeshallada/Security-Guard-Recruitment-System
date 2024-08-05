@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Accepted Applications</title>
+    <style>
+         body {
+            background-image: url('https://images.pexels.com/photos/1242348/pexels-photo-1242348.jpeg?cs=srgb&dl=pexels-juan-pablo-serrano-arenas-1242348.jpg&fm=jpg'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+         }
+        .applications-table-container {
+            background-color: #e2debc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .applications-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .applications-table th {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .applications-table tr {
+            transition: background-color 0.3s;
+        }
+
+        .applications-table tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .applications-table td {
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .action-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .action-button:hover {
+            background-color: #0056b3;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2 align="center">Rejected Applications</h2>
+    <div class="applications-table-container">
+        <table class="applications-table">
+            <thead>
+                <tr>
+                    <th>SI.NO</th>
+                    <th>Name</th>
+                    <th>ID Type</th>
+                    <th>ID number</th>
+                    <th>Mobile No.</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.firstname}} {{i.lastname}}</td>
+                    <td>{{i.idtype}}</td>
+                    <td>{{i.idnumber}}</td>
+                    <td>{{i.mobileno}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.address}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table><br><br><hr><hr>
+        <a href="/admin_index/"><center><input type="submit" value="Back to Admin page"></a><hr><hr>
+    </div>
+</body>
+</html>

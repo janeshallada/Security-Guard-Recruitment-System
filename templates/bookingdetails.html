@@ -1,0 +1,180 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Details</title>
+    <style>
+        body {
+            background-image: url('https://images.pexels.com/photos/1242348/pexels-photo-1242348.jpeg?cs=srgb&dl=pexels-juan-pablo-serrano-arenas-1242348.jpg&fm=jpg'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="time"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: none;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .action-buttons {
+            text-align: center;
+        }
+
+        .action-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .action-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Application Details</h1>
+        <table>
+                <tr>
+                    <th>Name</th>
+                    <td>{{data.firstname}} {{data.lastname}}</td>
+                    <th>Mobile No</th>
+                    <td>{{data.mobileno}}</td></tr>
+                    <tr>
+                    <th>Email</th>
+                    <td>{{data.email}}</td>
+                        <th>Qualification</th>
+                        <td>{{data.qualification}}</td></tr>
+                        <th>Certificate</th>
+                        <td>{% if data.qualification != "Uneducated" %}
+                            <img src="{{data.pic.url}}" alt="guard img" width="20%"></td>
+                            {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Id Type</th>
+                        <td>{{data.idtype}}</td>
+                        <th>Id Nummber</th>
+                        <td>{{data.idnumber}}</td>
+                    </tr>
+
+                    <tr>
+                    <th>Gender</th>
+                    <td>{{data.gender}}</td>
+                    <th>Address</th>
+                    <td>{{data.address}}</td></tr>
+                    <tr><th>Request Status</th>
+                        <td>{% if data.status == "Not Updated Yet" %}
+                                Not Updated Yet
+                               {% endif %}
+                        {% for i in traking %}
+                        {{i.status}}
+                        {% endfor %}</td>
+                        <th>Remark</th>
+                        <td>{% if data.status == "Not Updated Yet" %}
+                                Not Updated Yet
+                            {% endif %}
+                        {% for i in traking %}
+                        {{i.remark}}
+                        {% endfor %}
+                        </td>
+                    </tr>
+                    <tr><th>Date of Request</th>
+                        <td>{% if data.status == "Not Updated Yet" %}
+                             Not Updated Yet
+                             {% endif %}
+                             {% for i in traking %}
+                            {{i.creationdate}}
+                            {% endfor %}
+                         </td>
+                        
+                    </tr>
+        </table>
+    </div>
+                {% if data.status == "Not Updated Yet" %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="container" align="center"><table>
+                <tr><th><label>Remark:</label></th>
+                <td><textarea class="container" name="remark" placeholder="Remark"></textarea></td></tr>
+                <tr><th><label>Status:</label></th>
+                <td><select class="form-control" name="status">
+                <option></option>
+                <option value="Accepted">Accepted</option>
+                <option value="Rejected">Rejected</option>
+               </select><br></td></tr>
+               <tr><th><label>workplace:</label></th>
+               <td><input type="text" name="workplace" placeholder="Enter Workplace Details"><br></td></tr>
+               <tr><th><label>Timing From:</label></th>
+               <td><input type="time" name="stime" placeholder="enter start timings"><br></td></tr>
+               <tr><th><label>Timing To:</label></th>
+               <td><input type="time" name="etime" placeholder="enter start timings"><br></td></tr>
+               <tr><th><label>From date:</label></th>
+               <td><input type="date" name="fromdate" placeholder="enter starting date"><br></td></tr>
+               <tr><th><label>To date:</label></th>
+               <td><input type="date" name="todate" placeholder="enter ending date"><br></td></tr></table><br>
+
+                <div class="modal-footer">
+                <button type="submit" class="action-button">Update</button>
+                <button type="close" class="action-button">Close</button></div>
+
+                </div></form>
+                {% endif %}
+    {% for i in messages %}
+    <script>
+        alert('{{i}}');
+    </script>
+    {% endfor %}
+</body>
+</html>

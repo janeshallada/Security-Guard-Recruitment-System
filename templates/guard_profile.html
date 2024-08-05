@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Profile</title>
+	<style>
+        body {
+            background-image: url('https://media.istockphoto.com/id/842004634/photo/male-security-guard-in-uniform.jpg?s=612x612&w=0&k=20&c=cKb8emIHE8qBpoFLwoANw9lP-UkfqRQaVRUWjsCmo6E='); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+		
+        nav {
+            background-color: #665656;
+			width: auto;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration:underline;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="time"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: none;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f71f43;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .action-buttons {
+            text-align: center;
+        }
+
+        .action-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .action-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+	<nav>
+        <ul>
+            <li><a href="{% url 'profile_update2' data.id %}">Profile Update</a></li>
+            <li><a href="{% url 'change_password2' data.id %}">Change Password</a></li>
+            <li><a href="{% url 'training_level' data.id %}">Training Level</a></li>
+            <li><a href="{% url 'issues' data.id %}">Issues</a></li>
+            <li><a href="/logout_admin/">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Your Details</h1>
+        <table border="3px">
+                <tr>
+                    <th>Name</th>
+					<td>{{data.firstname}} {{data.lastname}}</td></tr>
+					<tr>
+                    <th>Mobile No</th>
+					<td>{{data.mobileno}}</td>
+                    <th>Email</th>
+					<td>{{data.email}}</td></tr>
+                    <tr>
+                        <th>Qualification</th>
+                        <td>{{data.qualification}}</td>
+                        <th>Certificate</th>
+                        <td>{% if data.qualification != "Uneducated" %}
+                            <img src="{{data.pic.url}}" alt="guard img" width="40%">
+                            {% else %}
+                            Not uploaded
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Id Type</th>
+                        <td>{{data.idtype}}</td>
+                        <th>Id Nummber</th>
+                        <td>{{data.idnumber}}</td>
+                    </tr>
+
+					<tr>
+					<th>Gender</th>
+					<td>{{data.gender}}</td>
+					<th>Address</th>
+					<td>{{data.address}}</td></tr>
+					<tr><th>Request Status</th>
+						<td>{% if data.status == "Not Updated Yet" %}
+								Not Updated Yet
+							   {% endif %}
+						{% for i in traking %}
+						{{i.status}}
+                        {% endfor %}
+						</td>
+						<th>Remark</th>
+						<td>{% if data.status == "Not Updated Yet" %}
+								Not Updated Yet
+							{% endif %}
+						{% for i in traking %}
+						{{i.remark}}
+						{% endfor %}
+						</td>
+					</tr>
+					<tr><th>Date of Request</th>
+						<td>{% if data.status == "Not Updated Yet" %}
+							 Not Updated Yet
+							 {% endif %}
+							 {% for i in traking %}
+							{{i.creationdate}}
+							{% endfor %}
+						 </td>
+						 <th>Training Level</th>
+						<td>{% if data.status == "Not Updated Yet" %}
+							 Not Updated Yet
+							 {% else %}
+							 {{data.level}}
+							 {% endif %}
+						 </td>
+						
+					</tr>
+		</table>
+    </div>
+    <div class="container">
+    {% if data.status == "Accepted" %}
+    <h2 style="color:blueviolet;"> See Your Workdetails </h2>
+    <table border="3px">
+		<tr>
+			<th>workplace/address</th>
+			<th>Contact No:</th>
+			<th>Starting time:</th>
+			<th>Ending time:</th>
+			<th>From date</th>
+			<th>To date</th>
+		</tr>
+		<tr>
+			{% for i in traking %}
+			<td>{{i.workplace}}</td>
+			<td>{{i.contactno}}</td>
+			<td>{{i.fromtime}}</td>
+			<td>{{i.totime}}</td>
+			<td>{{i.fromdate}}</td>
+			<td>{{i.todate}}</td>
+			{% endfor %}
+		</tr>
+    </table></div>
+    {% endif %}
+
+ {% for i in messages %}
+<script>
+    alert('{{i}}');
+</script>
+{% endfor %}
+   
+    
+</body>
+</html>

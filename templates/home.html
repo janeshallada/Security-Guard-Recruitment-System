@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <title>Security Guard Recruitment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://thumbs.dreamstime.com/b/member-security-guard-team-public-event-working-unrecognizable-male-person-behind-92940264.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        header {
+            background-color: #16bcda;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration:underline;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgb(217, 239, 243);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            text-transform: uppercase;
+        }
+        h2 {
+            font-size: 20px;
+            color: #0a0a0a;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #0a0a0a;
+        }
+
+        footer {
+            background-color: none;
+            color: rgb(206, 78, 18);
+            text-align: center;
+            padding: 10px 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="button"] {
+            background-color: #007BFF;
+            color: #fff;
+            font-size: medium;
+            padding:10px auto;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vidhyadhan Solutions</h1>
+        <h2>Security Guard Recruitment</h2>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#"><i class="fa fa-home"></i> HOME</a></li>
+            <li><a href="/admin_login/"><i class="fa fa-user"></i> ADMIN LOGIN</a></li>
+            <li><a href="/login/"><i class="fa fa-user"></i> USER LOGIN</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2 align="center" style="color: rgb(243, 38, 38);">Welcome to our Security Guard Recruitment</h2><hr><hr>
+        <p><marquee><u> We are hiring security guards</u></marquee></p>
+        <a href="/signup/"><input type="button" value="Register"></a>
+        <p>We are always looking for dedicated and qualified individuals to join our team as security guards. Explore our job listings and apply today!</p><hr><hr>
+    </div>
+    {% if request.user.isauthenticated %}
+    {% endif %}
+
+    <footer>
+        &copy; 2023 Security Guard Recruitment 
+    </footer>
+
+    {% for i in messages %}
+    <script>
+        alert('{{i}}');
+    </script>
+    {% endfor %}
+    
+</body>
+</html>

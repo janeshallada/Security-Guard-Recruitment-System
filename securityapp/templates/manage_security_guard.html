@@ -1,0 +1,60 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Manage Security Guard</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Manage Security Guard</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Manage Security Guard</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>S No.</th>
+                    <th>Name</th>
+                    <th>Mobile Number</th>
+                    <th>Registration Date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                {% for i in data %}
+                <tbody>
+                <tr>
+                    <td>{{forloop.counter}}.</td>
+                    <td>{{i.guardname}}</td>
+                    <td>{{i.mobilenumber}}</td>
+                    <td>{{i.creationdate}}</td>
+                    <td>
+                        <a href="{% url 'edit_security_guard' i.id %}">
+                            <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                        </a>
+                        <a href="{% url 'delete_security_guard' i.id %}" onclick="return confirm('Are you sure?')">
+                            <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+{% endblock %}

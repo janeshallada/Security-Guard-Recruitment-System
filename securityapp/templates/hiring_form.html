@@ -1,0 +1,156 @@
+{% load static %}
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Gutim Template">
+    <meta name="keywords" content="Gutim, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Online Security Guard Hiring System</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="container">
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="{% static 'img/logo.png' %}" alt="">
+                </a>
+            </div>
+            <div class="nav-menu">
+                <nav class="mainmenu mobile-menu">
+                    <ul>
+                        <li class="active"><a style="color:black" href="/">HOME</a></li>
+                        <li><a style="color:orange" href="/hiring_form/">HIRING FORM</a></li>
+                        <li><a style="color:orange" href="/request_status/">REQUEST STATUS</a></li>
+                    </ul>
+                </nav>
+                <a href="/admin_login/" style="color:black" class="primary-btn signup-btn">ADMIN</a>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'img/breadcrumb/classes-breadcrumb.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <h2 style="color:orange">Guard Hiring</h2>
+                        <div class="breadcrumb-option">
+                            <a href="/"><i class="fa fa-home"></i> Home</a>
+                            <span style="color:black">Guard Hiring</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Register Section Begin -->
+    <section class="register-section classes-page spad">
+        <div class="container">
+            <div class="classes-page-text">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="register-text">
+                            <div class="section-title">
+                                <h2>Register Now</h2>
+                            </div>
+                            <hr>
+                            <form action="#" class="register-form" method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label >First Name</label>
+                                        <input type="text" name="firstname" placeholder="First Name" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label >Last Name</label>
+                                        <input type="text" id="last-name" name="lastname" placeholder="Last Name" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label >Your email address</label>
+                                        <input type="text" id="email" name="email" placeholder="Email Address" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Mobile No*</label>
+                                        <input type="text" id="mobile" name="mobileno" placeholder="Mobile Number" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Requirement Number(Number of Guards)</label>
+                                        <input type="text" name="requirementnumber"  placeholder="Requirement Number" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Shift Requirement*</label><br>
+                                        <select class="form-control" type="text" name="shift"  placeholder="Shift Requirement" required>
+                                        <option value="">Choose shift</option>
+                                        <option>Day</option>
+                                        <option>Night</option>
+                                        <option>24hrs</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label>Gender</label><br>
+                                        <select class="form-control" type="text"  placeholder="Gender" name="gender" required>
+                                        <option value="">Choose Gender</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label>Address</label>
+                                        <textarea name="address" rows="5" class="form-control" name="address" placeholder="Address" required></textarea>
+                                      </div>
+                                </div>
+                                <button type="submit" class="register-btn">Send</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Register Section End -->
+
+
+    <!-- Js Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+{% for i in messages %}
+<script>
+alert('{{i}}');
+</script>
+{% endfor %}
+
+</body>
+
+</html>

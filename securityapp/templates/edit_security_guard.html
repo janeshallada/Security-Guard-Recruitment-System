@@ -1,0 +1,89 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Update Security Guard</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Update Security Guard</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Update Security Guard</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Profile Photo</label>
+                    <input type="file" name="pic" class="form-control">
+                    <img src="{% if data.pic %}{{data.pic.url}}{% endif %}" width="100">
+                  </div>
+                  <div class="form-group">
+                    <label>Name</label>
+                      <input type="text" name="guardname" class="form-control"  placeholder="Name"value="{{data.guardname}}" >
+                  </div>
+                  <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input type="text" name="mobilenumber" class="form-control" placeholder="Mobile Number" value="{{data.mobilenumber}}">
+                  </div>
+                  <div class="form-group">
+                    <label>Address</label>
+                    <textarea name="address" class="form-control" placeholder="Address">{{data.address}}</textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>ID Type</label>
+                    <select type="text" name="idtype" class="form-control">
+                    <option value="">Choose ID Type</option>
+                    <option {% if data.idtype == 'Adhaar Card' %}selected{% endif %}>Adhaar Card</option>
+                    <option {% if data.idtype == 'Voter Card' %}selected{% endif %}>Voter Card</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>ID Number</label>
+                    <input type="text" name="idnumber" class="form-control" placeholder="Id Number" value="{{data.idnumber}}">
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+            </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          <div class="col-md-6">
+
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

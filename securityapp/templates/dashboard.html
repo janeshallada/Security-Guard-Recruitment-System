@@ -1,0 +1,108 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+{% load static %}
+
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Dashboard</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+<!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-6 col-10">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{guard.count}}</h3>
+
+                <p>Total Guard</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-user"></i>
+              </div>
+              <a href="/manage_security_guard/?action=Guard" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-6 col-10">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{New.count}}</h3>
+
+                <p>New Booking Request</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-file"></i>
+              </div>
+              <a href="/bookinglist/?action=New" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-6 col-10">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{Accepted.count}}</h3>
+
+                <p>Total Accepted Booking</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-check-square"></i>
+              </div>
+              <a href="/bookinglist/?action=Accepted" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-6 col-10">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{Rejected.count}}</h3>
+
+                <p>Total Rejected Booking</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-window-close"></i>
+              </div>
+              <a href="/bookinglist/?action=Rejected" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-6 col-10">
+            <!-- small box -->
+            <div class="small-box bg-blue">
+              <div class="inner">
+                <h3>{{All.count}}</h3>
+
+                <p>Total Booking</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-file"></i>
+              </div>
+              <a href="/bookinglist/?action=All" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+        <!-- /.row -->
+{% endblock %}

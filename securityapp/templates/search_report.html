@@ -1,0 +1,101 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Search Booking</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Search Booking</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- jquery validation -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Search Booking</h3>
+                        </div>
+                        <div class="card-block">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <br>
+                                    <div class="col-sm-12">
+                                        <input type="text" style="width:100%;" class="form-control" id="exampleInputText1" placeholder="Search by Booking Number/Name/Mobile No" value="{{fromdate}}" name="fromdate">
+                                    </div>
+                                <br>
+                               <div class="col-sm-2" >
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                               </div>
+                            </form>
+                        </div>
+                        <!-- Basic Form Inputs card end -->
+<hr>
+                        {% if data %}
+                        <div class="container">
+                            <h4> All Challan Related to search for '{{fromdate}}'</h4>
+                            <div class="card-block table-border-style">
+                                <div class="table-responsive">
+                                    <table id="example1" class="table table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>S No.</th>
+                                            <th>Booking Number</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Contact Number</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        {% for i in data %}
+                                        <tbody>
+                                        <tr>
+                                            <td>{{forloop.counter}}.</td>
+                                            <td>{{i.bookingnumber}}</td>
+                                            <td>{{i.firstname}} {{i.lastname}}</td>
+                                            <td>{{i.email}}</td>
+                                            <td>{{i.mobileno}}</td>
+                                            <td>{{i.status}}</td>
+                                            <td>
+                                                <a href="{% url 'booking_detail' i.id %}">
+                                                    <button type="button" class="btn btn-primary"><i
+                                                            class="fa fa-eye"></i></button>
+                                                </a>
+                                                <a href="{% url 'delete_booking' i.id %}"
+                                                   onclick="return confirm('Are you sure?')">
+                                                    <button type="button" class="btn btn-danger"><i
+                                                            class="fa fa-trash"></i></button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                            {% elif data2 %}
+
+                            <h4 align="center">Data not found</h4>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+    </section>
+</div>
